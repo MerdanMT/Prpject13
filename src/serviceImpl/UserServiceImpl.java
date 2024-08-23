@@ -13,6 +13,7 @@ public class UserServiceImpl implements CommonService<User>, UserService {
     static {
         users.add(new User(1, "Adil Emirov", 2500, 31, "0515554433", 9.2, 1300));
         users.add(new User(1, "Kamran Veliyev", 900, 23, "0778887799", 8.7, 1800));
+        users.add(new User(1, "Merdan Memmedov", 1700, 26, "+994108887799", 5.5, 2300));
     }
 
     @Override
@@ -65,7 +66,18 @@ public class UserServiceImpl implements CommonService<User>, UserService {
 
     @Override
     public List<User> prefiksFilt(String prefiks) {
-        return users.stream().filter(nomre->nomre.getTelefonNomresi().startsWith(prefiks)).toList();
+        List<User> users1 = new ArrayList<>();
+        if (prefiks == "050" || prefiks == "070" || prefiks == "077" || prefiks == "055" || prefiks == "010" || prefiks == "051")
+        {
+            users1 = users.stream().filter(nomre -> nomre.getTelefonNomresi().startsWith(prefiks)).toList();
+
+        }
+        else if (prefiks == "+99450" || prefiks == "+99470" || prefiks == "+99477" || prefiks == "+99455" || prefiks == "+99410" || prefiks == "+99451")
+        {
+           users1 = users.stream().filter(nomre -> nomre.getTelefonNomresi().startsWith(prefiks)).toList();
+
+        }
+        return users1.stream().toList();
     }
 
     @Override

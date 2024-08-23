@@ -66,13 +66,15 @@ public class EmployeeServiceImpl implements CommonService<Employee>, EmployeeSer
     public List<Employee> pensiyaYasi(int age) {
 
         return employees.stream()
-                .map(m->new Employee(m.getId(),m.getName(),m.getYas(),m.getVezifesi(),m.getSifre(),m.getTelefonNomresi(),m.getTecrübeili(),m.getBolme())).filter(yas->yas.getYas()>=age-2).toList();
+                .map(m->new Employee(m.getId(),m.getName(),m.getYas()-2,m.getVezifesi(),m.getSifre()
+                        ,m.getTelefonNomresi(),m.getTecrübeili(),m.getBolme())).filter(yas->yas.getYas()==63).toList();
     }
 
     @Override
     public List<Employee> pensiyaYasi6(int age) {
         return employees.stream()
-                .map(m->new Employee(m.getId(),m.getName(),m.getYas(),m.getVezifesi(),m.getSifre(),m.getTelefonNomresi(),m.getTecrübeili(),m.getBolme())).filter(yas->yas.getYas()>=age-6).toList();
+                .map(m->new Employee(m.getId(),m.getName(),m.getYas()-6,m.getVezifesi(),m.getSifre()
+                        ,m.getTelefonNomresi(),m.getTecrübeili(),m.getBolme())).filter(yas->yas.getYas()==59).toList();
     }
 
 
