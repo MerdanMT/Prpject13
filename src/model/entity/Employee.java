@@ -1,4 +1,6 @@
-package entity;
+package model.entity;
+
+import model.enums.EmployeePosition;
 
 public class Employee {
     private int id;
@@ -9,8 +11,9 @@ public class Employee {
     private String telefonNomresi;
     private int tecrübeili;
     private String bolme;
+    public EmployeePosition position;
 
-    public Employee(int id, String name, int yas, String vezifesi, String sifre, String telefonNomresi, int tecrübeili, String bolme) {
+    public Employee(int id, String name, int yas, String vezifesi, String sifre, String telefonNomresi, int tecrübeili, String bolme, EmployeePosition position) {
         this.id = id;
         this.name = name;
         this.yas = yas;
@@ -19,6 +22,7 @@ public class Employee {
         this.telefonNomresi = telefonNomresi;
         this.tecrübeili = tecrübeili;
         this.bolme = bolme;
+        this.position=position;
     }
 
     public Employee() {
@@ -88,6 +92,11 @@ public class Employee {
         this.bolme = bolme;
     }
 
+    public EmployeePosition getPosition() {
+        return position;
+    }
+
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -97,8 +106,9 @@ public class Employee {
                 ", vezifesi='" + vezifesi + '\'' +
                 ", sifre='" + sifre + '\'' +
                 ", telefonNomresi='" + telefonNomresi + '\'' +
-                ", tecrübeili='" + tecrübeili + '\'' +
+                ", tecrübeili=" + tecrübeili +
                 ", bolme='" + bolme + '\'' +
+                ", position=" + position +
                 '}';
     }
 }

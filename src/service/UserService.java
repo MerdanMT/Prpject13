@@ -1,6 +1,6 @@
 package service;
 
-import entity.User;
+import model.entity.User;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package serviceImpl;
 
-import entity.User;
+import model.entity.User;
 import service.CommonService;
 import service.UserService;
 

@@ -1,4 +1,6 @@
-package entity;
+package model.entity;
+
+import model.enums.EmployeePosition;
 
 public class User {
     private int id;
