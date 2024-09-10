@@ -1,6 +1,7 @@
 package model.entity;
 
 import model.enums.EmployeePosition;
+import model.enums.UserPosition;
 
 public class User {
     private int id;
@@ -10,18 +11,21 @@ public class User {
     private String telefonNomresi;
     private double kreditReytinqi;   //(10 bal skalası)
     private double AyliqGelir;       //(minimal emekhaqqi = 400)
+    private UserPosition userPosition;
 
-    public User(int id, String name, double borc, int yas, String telefonNomresi, double kreditReytinqi, double ayliqGelir) {
+    public User(int id, String name, double borc, int yas, String telefonNomresi, double kreditReytinqi, double ayliqGelir, UserPosition userPosition) {
         this.id = id;
         this.name = name;
         this.borc = borc;
         this.yas = yas;
         this.telefonNomresi = telefonNomresi;
         this.kreditReytinqi = kreditReytinqi;
-        this.AyliqGelir = ayliqGelir;
+        AyliqGelir = ayliqGelir;
+        this.userPosition = userPosition;
     }
 
     public User() {
+
     }
 
     public int getId() {
@@ -80,16 +84,25 @@ public class User {
         AyliqGelir = ayliqGelir;
     }
 
+    public UserPosition getUserPosition() {
+        return userPosition;
+    }
+
+    public void setUserPosition(UserPosition userPosition) {
+        this.userPosition = userPosition;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "AyliqGelir=" + AyliqGelir +
+                ", id=" + id +
                 ", name='" + name + '\'' +
-                ", borc='" + borc + '\'' +
+                ", borc=" + borc +
                 ", yas=" + yas +
                 ", telefonNomresi='" + telefonNomresi + '\'' +
-                ", kreditReytinqi='" + kreditReytinqi + '\'' +
-                ", AyliqGelir='" + AyliqGelir + '\'' +
+                ", kreditReytinqi=" + kreditReytinqi +
+                ", userPosition=" + userPosition +
                 '}';
     }
 }

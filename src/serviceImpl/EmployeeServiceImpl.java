@@ -1,9 +1,11 @@
 package serviceImpl;
 
 import model.entity.Employee;
+import model.entity.User;
 import model.enums.EmployeePosition;
 import service.CommonService;
 import service.EmployeeService;
+import util.FileReadWrite;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +23,11 @@ public class EmployeeServiceImpl implements CommonService<Employee>, EmployeeSer
 
     @Override
     public void read(int id) {
-        employees.get(id);
+        try {
+            Employee employee =employees.get(id);
+        }catch (Exception e){
+            throw new RuntimeException("id tapilmadi");
+        }
     }
 
     @Override
@@ -32,7 +38,9 @@ public class EmployeeServiceImpl implements CommonService<Employee>, EmployeeSer
 
     @Override
     public void delete(int id) {
-        employees.remove(id);
+        Employee employee = employees.remove(id);
+        FileReadWrite.writeFile("text.xml",employee.toString());
+
     }
 
     @Override

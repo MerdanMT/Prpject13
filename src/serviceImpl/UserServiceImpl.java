@@ -1,9 +1,12 @@
 package serviceImpl;
 
 import model.entity.User;
+import model.enums.UserPosition;
 import service.CommonService;
 import service.UserService;
+import util.FileReadWrite;
 
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +14,9 @@ public class UserServiceImpl implements CommonService<User>, UserService {
     static List<User> users = new ArrayList<>();
 
     static {
-        users.add(new User(1, "Adil Emirov", 2500, 31, "0515554433", 9.2, 1300));
-        users.add(new User(1, "Kamran Veliyev", 900, 23, "0778887799", 8.7, 1800));
-        users.add(new User(1, "Merdan Memmedov", 1700, 26, "+994108887799", 5.5, 2300));
+        users.add(new User(1, "Adil Emirov", 2500, 31, "0515554433", 9.2, 1300, UserPosition.A_CLASS_USER));
+        users.add(new User(1, "Kamran Veliyev", 900, 23, "0778887799", 8.7, 1800,UserPosition.B_CLASS_USER));
+        users.add(new User(1, "Merdan Memmedov", 1700, 26, "+994108887799", 5.5, 2300,UserPosition.RED_CLASS_USER));
     }
 
     @Override
@@ -23,7 +26,12 @@ public class UserServiceImpl implements CommonService<User>, UserService {
 
     @Override
     public void read(int id) {
-        users.get(id);
+        try {
+            User user = users.get(id);
+        }
+        catch (Exception e) {
+            throw new RuntimeException("id tapilmadi");
+        }
     }
 
     @Override
@@ -34,7 +42,9 @@ public class UserServiceImpl implements CommonService<User>, UserService {
 
     @Override
     public void delete(int id) {
-        users.remove(id);
+        User user = users.remove(id);
+        FileReadWrite.writeFile("text.xml",user.toString());
+
     }
 
     @Override
